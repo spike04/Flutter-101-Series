@@ -14,9 +14,39 @@ class MyApp extends StatelessWidget {
           title: Text('Flutter 101'),
         ),
         body: Center(
-          child: Text('Hello World From Flutter 101'),
+          child: LikeToggler(),
         ),
       ),
+    );
+  }
+}
+
+class LikeToggler extends StatefulWidget {
+  @override
+  _LikeTogglerState createState() => _LikeTogglerState();
+}
+
+class _LikeTogglerState extends State<LikeToggler> {
+  bool liked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Text(liked ? 'LIKED' : 'NOT LIKED'),
+        Padding(
+          padding: EdgeInsets.all(10.0),
+        ),
+        RaisedButton(
+          child: Text('TOGGLE LIKE'),
+          onPressed: () {
+            this.setState(() {
+              liked = !liked;
+            });
+          },
+        )
+      ],
     );
   }
 }
